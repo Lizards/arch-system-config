@@ -55,7 +55,7 @@ package_mikhail-config() {
 
 package_asds-laptop-config() {
     pkgdesc='System configurations for asds-laptop'
-    depends=('base-config' 'xf86-input-libinput')
+    depends=('base-config' 'xf86-input-libinput' 'xorg-xbacklight')
     conflicts=('mikhail-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
