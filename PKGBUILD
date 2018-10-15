@@ -1,6 +1,6 @@
 pkgbase=system-config
-pkgname=(base-config mikhail-config asds-laptop-config)
-pkgver=0.2
+pkgname=(base-config mikhail-config asds-laptop-config boris-config)
+pkgver=0.3
 pkgrel=1
 
 pkgdesc='Custom system configurations'
@@ -43,14 +43,24 @@ package_base-config() {
 package_mikhail-config() {
     pkgdesc='System configurations for mikhail'
     depends=('base-config')
-    conflicts=('asds-laptop-config')
+    conflicts=('asds-laptop-config' 'boris-config')
 }
 
 
 package_asds-laptop-config() {
     pkgdesc='System configurations for asds-laptop'
     depends=('base-config' 'xf86-input-libinput' 'xorg-xbacklight')
-    conflicts=('mikhail-config')
+    conflicts=('mikhail-config' 'boris-config')
+
+    install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
+    install -Dm0644 etc-xorg-libinput-touchpad.conf "$pkgdir"/etc/X11/xorg.conf.d/51-libinput-touchpad.conf
+}
+
+
+package_boris-config() {
+    pkgdesc='System configurations for boris'
+    depends=('base-config' 'xf86-input-libinput' 'xorg-xbacklight')
+    conflicts=('mikhail-config' 'asds-laptop-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
     install -Dm0644 etc-xorg-libinput-touchpad.conf "$pkgdir"/etc/X11/xorg.conf.d/51-libinput-touchpad.conf
