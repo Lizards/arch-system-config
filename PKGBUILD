@@ -59,7 +59,7 @@ package_asds-laptop-config() {
 
 package_boris-config() {
     pkgdesc='System configurations for boris'
-    depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd' 'openssl-1.0')
+    depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
     conflicts=('mikhail-config' 'asds-laptop-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
