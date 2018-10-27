@@ -1,7 +1,7 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Custom system configurations'
 arch=('any')
@@ -50,6 +50,7 @@ package_mikhail-config() {
 package_asds-laptop-config() {
     pkgdesc='System configurations for asds-laptop'
     depends=('base-config' 'xf86-input-libinput' 'xorg-xbacklight')
+    optdepends=('lenovo-throttling-fix-git: Lenovo power management patch')
     conflicts=('mikhail-config' 'boris-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
@@ -60,6 +61,7 @@ package_asds-laptop-config() {
 package_boris-config() {
     pkgdesc='System configurations for boris'
     depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
+    optdepends=('lenovo-throttling-fix-git: Lenovo power management patch')
     conflicts=('mikhail-config' 'asds-laptop-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
