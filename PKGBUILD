@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=0.4
+pkgver=0.5
 pkgrel=2
 
 pkgdesc='Custom system configurations'
@@ -9,6 +9,7 @@ url='https://github.com/Lizards/arch-system-config'
 license=('custom')
 
 source=(
+    'etc-systemd-bluetooth-policy.conf'
     'etc-pacman-mirror-upgrade.hook'
     'etc-pacman-paccache-remove.hook'
     'etc-pacman-paccache-upgrade.hook'
@@ -27,7 +28,9 @@ package_base-config() {
     pkgdesc='Common system configuration'
     depends=(
         'sudo'
+        'pulseaudio-bluetooth'
     )
+    install=base-config.install
 
     install -Dm0644 etc-vconsole.conf "$pkgdir"/etc/vconsole.conf
     install -Dm0600 sudo-wheel "$pkgdir"/etc/sudoers.d/wheel
@@ -38,7 +41,9 @@ package_base-config() {
     install -Dm0644 etc-samba-smb.conf "$pkgdir"/etc/samba/smb.conf
     install -Dm0644 etc-sysctl-max-user-watches.conf "$pkgdir"/etc/sysctl.d/40-max-user-watches.conf
     install -Dm0644 etc-xorg-no-mouse-accel.conf "$pkgdir"/etc/X11/xorg.conf.d/50-no-mouse-accel.conf
+    install -Dm0644 etc-systemd-bluetooth-policy.conf "$pkgdir"/etc/systemd/system/bluetooth.service.d/policy.conf
 }
+
 
 package_mikhail-config() {
     pkgdesc='System configurations for mikhail'
@@ -69,7 +74,8 @@ package_boris-config() {
 }
 
 
-md5sums=('ab5c11edd04b6e4fc104c383d04d4313'
+md5sums=('2a6056db387e51a4688108b2ed7b0925'
+         'ab5c11edd04b6e4fc104c383d04d4313'
          '3cc617fe0aecd037ea7f45fd2e06221b'
          '3af7587abe25c2b96c58ab50fd9554e4'
          'dce4058960baf1608bfa496e0c8ad715'
