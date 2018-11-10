@@ -1,7 +1,7 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=0.5
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 
 pkgdesc='Custom system configurations'
 arch=('any')
@@ -9,6 +9,7 @@ url='https://github.com/Lizards/arch-system-config'
 license=('custom')
 
 source=(
+    'bin-package-sync.sh'
     'etc-systemd-bluetooth-policy.conf'
     'etc-pacman-mirror-upgrade.hook'
     'etc-pacman-paccache-remove.hook'
@@ -32,6 +33,7 @@ package_base-config() {
     )
     install=base-config.install
 
+    install -Dm0755 bin-package-sync.sh "$pkgdir"/usr/local/bin/package-sync
     install -Dm0644 etc-vconsole.conf "$pkgdir"/etc/vconsole.conf
     install -Dm0600 sudo-wheel "$pkgdir"/etc/sudoers.d/wheel
     install -Dm0644 etc-pacman-mirror-upgrade.hook "$pkgdir"/etc/pacman.d/hooks/mirror-upgrade.hook
@@ -74,7 +76,8 @@ package_boris-config() {
 }
 
 
-md5sums=('2a6056db387e51a4688108b2ed7b0925'
+md5sums=('ef31c7a9acc48c66db5945b39b560af4'
+         '2a6056db387e51a4688108b2ed7b0925'
          'ab5c11edd04b6e4fc104c383d04d4313'
          '3cc617fe0aecd037ea7f45fd2e06221b'
          '3af7587abe25c2b96c58ab50fd9554e4'
