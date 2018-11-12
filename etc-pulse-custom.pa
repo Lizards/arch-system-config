@@ -1,0 +1,5 @@
+load-module module-bluez5-device
+load-module module-bluez5-discover
+
+# automatically switch to newly-connected devices
+load-module module-switch-on-connect ignore_virtual=no

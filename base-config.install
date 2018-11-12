@@ -8,19 +8,14 @@ _setup_bluetooth() {
         sed -i 's/#AutoEnable=false/AutoEnable=true/g' $BLUETOOTH_CONF
     fi
 
-    local PULSEAUDIO_CONF=/etc/pulse/system.pa
-    if ! grep -q "bluetooth" $PULSEAUDIO_CONF; then
+    local PULSEAUDIO_CONF=/etc/pulse/default.pa
+    if ! grep -q ".include /etc/pulse/custom.pa" $PULSEAUDIO_CONF; then
         echo "Enabling Bluetooth PulseAudio modules"
         # Please note tabs in the here-doc to support indentation - https://unix.stackexchange.com/questions/76481/cant-indent-heredoc-to-match-nestings-indent
         cat >> $PULSEAUDIO_CONF <<- EOF
 
-			# PulseAudio Bluetooth
-			load-module module-bluetooth-policy
-			load-module module-bluetooth-discover
-			# automatically switch to newly-connected devices
-			load-module module-switch-on-connect
-			# or switch also to newly-connected virtual devices
-			load-module module-switch-on-connect ignore_virtual=no
+			.include /etc/pulse/custom.pa
+
 		EOF
     fi
 }

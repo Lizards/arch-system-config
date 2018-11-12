@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=1.0
+pkgver=1.3
 pkgrel=1
 
 pkgdesc='Custom system configurations'
@@ -10,11 +10,11 @@ license=('custom')
 
 source=(
     'bin-package-sync.sh'
-    'etc-systemd-bluetooth-policy.conf'
     'etc-pacman-mirror-upgrade.hook'
     'etc-pacman-paccache-remove.hook'
     'etc-pacman-paccache-upgrade.hook'
     'etc-pacman-systemd-boot.hook'
+    'etc-pulse-custom.pa'
     'etc-samba-smb.conf'
     'etc-sysctl-max-user-watches.conf'
     'etc-vconsole.conf'
@@ -43,7 +43,7 @@ package_base-config() {
     install -Dm0644 etc-samba-smb.conf "$pkgdir"/etc/samba/smb.conf
     install -Dm0644 etc-sysctl-max-user-watches.conf "$pkgdir"/etc/sysctl.d/40-max-user-watches.conf
     install -Dm0644 etc-xorg-no-mouse-accel.conf "$pkgdir"/etc/X11/xorg.conf.d/50-no-mouse-accel.conf
-    install -Dm0644 etc-systemd-bluetooth-policy.conf "$pkgdir"/etc/systemd/system/bluetooth.service.d/policy.conf
+    install -Dm0644 etc-pulse-custom.pa "$pkgdir"/etc/pulse/custom.pa
 }
 
 
@@ -77,11 +77,11 @@ package_boris-config() {
 
 
 md5sums=('ef31c7a9acc48c66db5945b39b560af4'
-         '2a6056db387e51a4688108b2ed7b0925'
          'ab5c11edd04b6e4fc104c383d04d4313'
          '3cc617fe0aecd037ea7f45fd2e06221b'
          '3af7587abe25c2b96c58ab50fd9554e4'
          'dce4058960baf1608bfa496e0c8ad715'
+         'a39be2c92ed14a937e33818cea8a5517'
          '1c95f7edc3d1fb6ac204b7be5787ab1b'
          'acaed183146fb92c5db187472ec69e63'
          '000f8a0ac1064298141f6bc211e836d2'
