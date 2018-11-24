@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 
 pkgdesc='Custom system configurations'
