@@ -1,27 +1,6 @@
 #!/bin/bash
 
 
-_setup_bluetooth() {
-    local BLUETOOTH_CONF=/etc/bluetooth/main.conf
-    if ! grep -q "AutoEnable=true" $BLUETOOTH_CONF; then
-        echo
-        echo "Enabling Bluetooth device auto-connect"
-        sed -i 's/#AutoEnable=false/AutoEnable=true/g' $BLUETOOTH_CONF
-    fi
-
-    local PULSEAUDIO_CONF=/etc/pulse/default.pa
-    if ! grep -q ".include /etc/pulse/custom.pa" $PULSEAUDIO_CONF; then
-        echo
-        echo "Enabling Bluetooth PulseAudio modules"
-        # Please note tabs in the here-doc to support indentation - https://unix.stackexchange.com/questions/76481/cant-indent-heredoc-to-match-nestings-indent
-        cat >> $PULSEAUDIO_CONF <<- EOF
-
-			.include /etc/pulse/custom.pa
-
-		EOF
-    fi
-}
-
 _enable_pacman_animation() {
     if ! grep -q "ILoveCandy" /etc/pacman.conf; then
         echo
@@ -32,11 +11,9 @@ _enable_pacman_animation() {
 
 
 post_install() {
-    _setup_bluetooth
     _enable_pacman_animation
 }
 
 post_upgrade() {
-    _setup_bluetooth
     _enable_pacman_animation
 }
