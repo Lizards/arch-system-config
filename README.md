@@ -2,6 +2,6 @@
 Personal Arch Linux system configuration
 
 ```
-$ aurbuild -d custom
+$ aur build -d custom
 $ sudo pacman -Syu $HOSTNAME-config
 ```
