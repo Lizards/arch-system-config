@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 
 pkgdesc='Custom system configurations'
@@ -10,6 +10,7 @@ license=('custom')
 
 source=(
     'bin-package-sync.sh'
+    'etc-modprobe-pcspkr.conf'
     'etc-pacman-mirror-upgrade.hook'
     'etc-pacman-paccache-remove.hook'
     'etc-pacman-paccache-upgrade.hook'
@@ -32,6 +33,7 @@ package_base-config() {
     install=base-config.install
 
     install -Dm0755 bin-package-sync.sh "$pkgdir"/usr/local/bin/package-sync
+    install -Dm0644 etc-modprobe-pcspkr.conf "$pkgdir"/etc/modprobe.d/pcspkr.conf
     install -Dm0644 etc-vconsole.conf "$pkgdir"/etc/vconsole.conf
     install -Dm0600 sudo-wheel "$pkgdir"/etc/sudoers.d/wheel
     install -Dm0644 etc-pacman-mirror-upgrade.hook "$pkgdir"/etc/pacman.d/hooks/mirror-upgrade.hook
@@ -74,6 +76,7 @@ package_boris-config() {
 
 
 md5sums=('ef31c7a9acc48c66db5945b39b560af4'
+         'a9ceb54c8a4640b71cb64ba29586c7bb'
          'ab5c11edd04b6e4fc104c383d04d4313'
          '3cc617fe0aecd037ea7f45fd2e06221b'
          '3af7587abe25c2b96c58ab50fd9554e4'
