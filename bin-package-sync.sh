@@ -14,7 +14,7 @@ function get_package_defs() {
 function install_packages() {
     readarray -t packages < "chroot/packages/arch"
     readarray -t aur_packages < "chroot/packages/aur"
-    aursync "${aur_packages[@]}"
+    aur sync "${aur_packages[@]}"
     sudo pacman -Syu
     sudo pacman -S --needed --noconfirm "${packages[@]}" "${aur_packages[@]}"
 }

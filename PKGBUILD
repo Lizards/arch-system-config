@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 
 pkgdesc='Custom system configurations'
@@ -75,7 +75,7 @@ package_boris-config() {
 }
 
 
-md5sums=('ef31c7a9acc48c66db5945b39b560af4'
+md5sums=('9f6bc0b4ede02e468406c1c164e64107'
          'a9ceb54c8a4640b71cb64ba29586c7bb'
          'ab5c11edd04b6e4fc104c383d04d4313'
          '3cc617fe0aecd037ea7f45fd2e06221b'
