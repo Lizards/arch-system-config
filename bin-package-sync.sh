@@ -12,6 +12,11 @@ function get_package_defs() {
 
 
 function install_packages() {
+    # Import GPG keys for AUR packages
+    grep -v '^ *#' < "chroot/packages/gpg-keys" | while IFS= read -r key
+    do
+        gpg --recv-keys "${key}"
+    done
     readarray -t packages < "chroot/packages/arch"
     readarray -t aur_packages < "chroot/packages/aur"
     aur sync "${aur_packages[@]}"
