@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 
 pkgdesc='Custom system configurations'
@@ -55,7 +55,7 @@ package_mikhail-config() {
 
 package_asds-laptop-config() {
     pkgdesc='System configurations for asds-laptop'
-    depends=('base-config' 'xf86-input-libinput' 'xorg-xbacklight')
+    depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight')
     optdepends=('lenovo-throttling-fix-git: Lenovo power management patch')
     conflicts=('mikhail-config' 'boris-config')
 
