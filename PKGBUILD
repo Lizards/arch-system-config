@@ -1,6 +1,6 @@
 pkgbase=system-config
-pkgname=(base-config mikhail-config asds-laptop-config boris-config)
-pkgver=1.9
+pkgname=(base-config radomir-config mikhail-config boris-config)
+pkgver=1.10
 pkgrel=1
 
 pkgdesc='Custom system configurations'
@@ -47,28 +47,26 @@ package_base-config() {
 
 
 package_mikhail-config() {
-    pkgdesc='System configurations for mikhail'
+    pkgdesc='System configurations for mikhail (desktop PC)'
     depends=('base-config')
-    conflicts=('asds-laptop-config' 'boris-config')
+    conflicts=('radomir-config' 'boris-config')
 }
 
 
-package_asds-laptop-config() {
-    pkgdesc='System configurations for asds-laptop'
-    depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight')
+package_boris-config() {
+    pkgdesc='System configurations for boris (X1 Carbon Gen 6)'
+    depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
     optdepends=('lenovo-throttling-fix-git: Lenovo power management patch')
-    conflicts=('mikhail-config' 'boris-config')
+    conflicts=('radomir-config' 'mikhail-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
     install -Dm0644 etc-xorg-libinput-touchpad.conf "$pkgdir"/etc/X11/xorg.conf.d/51-libinput-touchpad.conf
 }
 
-
-package_boris-config() {
-    pkgdesc='System configurations for boris'
+package_radomir-config() {
+    pkgdesc='System configurations for radomir (X1 Carbon Gen 12)'
     depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
-    optdepends=('lenovo-throttling-fix-git: Lenovo power management patch')
-    conflicts=('mikhail-config' 'asds-laptop-config')
+    conflicts=('mikhail-config' 'boris-config')
 
     install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
     install -Dm0644 etc-xorg-libinput-touchpad.conf "$pkgdir"/etc/X11/xorg.conf.d/51-libinput-touchpad.conf
