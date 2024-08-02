@@ -1,7 +1,7 @@
 pkgbase=system-config
 pkgname=(base-config radomir-config mikhail-config boris-config)
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Custom system configurations'
 arch=('any')
@@ -65,10 +65,9 @@ package_boris-config() {
 
 package_radomir-config() {
     pkgdesc='System configurations for radomir (X1 Carbon Gen 12)'
-    depends=('base-config' 'sof-firmware' 'intel-media-driver' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
+    depends=('base-config' 'sof-firmware' 'intel-media-driver' 'xf86-input-libinput' 'acpilight' 'fwupd')
     conflicts=('mikhail-config' 'boris-config')
 
-    install -Dm0644 etc-xorg-intel-backlight.conf "$pkgdir"/etc/X11/xorg.conf.d/10-intel-backlight.conf
     install -Dm0644 etc-xorg-libinput-touchpad.conf "$pkgdir"/etc/X11/xorg.conf.d/51-libinput-touchpad.conf
 }
 
