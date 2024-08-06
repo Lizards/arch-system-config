@@ -9,11 +9,20 @@ _enable_pacman_animation() {
     fi
 }
 
+_enable_pacman_color() {
+    if grep -q "#Color" /etc/pacman.conf; then
+        echo
+        echo "Enabling Pacman color"
+        sed -i 's/#Color/Color/' /etc/pacman.conf
+    fi
+}
 
 post_install() {
     _enable_pacman_animation
+    _enable_pacman_color
 }
 
 post_upgrade() {
     _enable_pacman_animation
+    _enable_pacman_color
 }

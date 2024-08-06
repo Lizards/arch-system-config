@@ -1,7 +1,7 @@
 pkgbase=system-config
 pkgname=(base-config radomir-config mikhail-config boris-config)
 pkgver=1.10
-pkgrel=4
+pkgrel=5
 
 pkgdesc='Custom system configurations'
 arch=('any')
