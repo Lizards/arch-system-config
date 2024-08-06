@@ -1,7 +1,7 @@
 pkgbase=system-config
 pkgname=(base-config radomir-config mikhail-config boris-config)
 pkgver=1.10
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Custom system configurations'
 arch=('any')
@@ -17,7 +17,6 @@ source=(
     'etc-pacman-systemd-boot.hook'
     'etc-samba-smb.conf'
     'etc-sysctl-max-user-watches.conf'
-    'etc-vconsole.conf'
     'etc-xorg-intel-backlight.conf'
     'etc-xorg-libinput-touchpad.conf'
     'etc-xorg-no-mouse-accel.conf'
@@ -34,7 +33,6 @@ package_base-config() {
 
     install -Dm0755 bin-package-sync.sh "$pkgdir"/usr/local/bin/package-sync
     install -Dm0644 etc-modprobe-pcspkr.conf "$pkgdir"/etc/modprobe.d/pcspkr.conf
-    install -Dm0644 etc-vconsole.conf "$pkgdir"/etc/vconsole.conf
     install -Dm0600 sudo-wheel "$pkgdir"/etc/sudoers.d/wheel
     install -Dm0644 etc-pacman-mirror-upgrade.hook "$pkgdir"/etc/pacman.d/hooks/mirror-upgrade.hook
     install -Dm0644 etc-pacman-paccache-upgrade.hook "$pkgdir"/etc/pacman.d/hooks/paccache-upgrade.hook
@@ -80,7 +78,6 @@ md5sums=('d73e8e49ec2d7c4b7b6d9d2c30e40f81'
          'dce4058960baf1608bfa496e0c8ad715'
          '1c95f7edc3d1fb6ac204b7be5787ab1b'
          'acaed183146fb92c5db187472ec69e63'
-         '000f8a0ac1064298141f6bc211e836d2'
          'c20980fa99ab840ff3a501644fdb3343'
          'ea90af87197b37469835c2683273ea44'
          '5d6b7b66421ade7b81417444e232aeb0'
