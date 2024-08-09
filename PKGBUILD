@@ -1,7 +1,7 @@
 pkgbase=system-config
 pkgname=(base-config radomir-config mikhail-config boris-config)
-pkgver=1.10
-pkgrel=5
+pkgver=1.11
+pkgrel=0
 
 pkgdesc='Custom system configurations'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
     'etc-xorg-intel-backlight.conf'
     'etc-xorg-libinput-touchpad.conf'
     'etc-xorg-no-mouse-accel.conf'
-    'sudo-wheel'
+    'etc-sudoers.d-custom'
 )
 
 
@@ -33,7 +33,7 @@ package_base-config() {
 
     install -Dm0755 bin-package-sync.sh "$pkgdir"/usr/local/bin/package-sync
     install -Dm0644 etc-modprobe-pcspkr.conf "$pkgdir"/etc/modprobe.d/pcspkr.conf
-    install -Dm0600 sudo-wheel "$pkgdir"/etc/sudoers.d/wheel
+    install -Dm0600 etc-sudoers.d-custom "$pkgdir"/etc/sudoers.d/10-custom
     install -Dm0644 etc-pacman-mirror-upgrade.hook "$pkgdir"/etc/pacman.d/hooks/mirror-upgrade.hook
     install -Dm0644 etc-pacman-paccache-upgrade.hook "$pkgdir"/etc/pacman.d/hooks/paccache-upgrade.hook
     install -Dm0644 etc-pacman-paccache-remove.hook "$pkgdir"/etc/pacman.d/hooks/paccache-remove.hook
@@ -81,4 +81,4 @@ md5sums=('d73e8e49ec2d7c4b7b6d9d2c30e40f81'
          'c20980fa99ab840ff3a501644fdb3343'
          'ea90af87197b37469835c2683273ea44'
          '5d6b7b66421ade7b81417444e232aeb0'
-         '2276728219e4c67d0d4176e4bd1992c4')
+         '21df011f2adcd0bb7d8ab991146ae1a2')

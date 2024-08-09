@@ -1,0 +1,2 @@
+Defaults passwd_timeout=600
+%wheel ALL=(ALL) ALL
