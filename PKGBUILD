@@ -1,6 +1,6 @@
 pkgbase=system-config
 pkgname=(base-config radomir-config mikhail-config boris-config)
-pkgver=1.11
+pkgver=1.12
 pkgrel=0
 
 pkgdesc='Custom system configurations'
@@ -53,7 +53,7 @@ package_mikhail-config() {
 
 package_boris-config() {
     pkgdesc='System configurations for boris (X1 Carbon Gen 6)'
-    depends=('base-config' 'mesa-amber' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
+    depends=('base-config' 'xf86-video-intel' 'xf86-input-libinput' 'xorg-xbacklight' 'fwupd')
     optdepends=('lenovo-throttling-fix-git: Lenovo power management patch')
     conflicts=('radomir-config' 'mikhail-config')
 
